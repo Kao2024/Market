@@ -31,35 +31,67 @@ public final class Service1Grpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<generated.ds.service1.LightRequest,
-      generated.ds.service1.LightResponse> getService1DoMethod;
+      generated.ds.service1.LightResponse> getTurnOnMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "service1Do",
+      fullMethodName = SERVICE_NAME + '/' + "TurnOn",
       requestType = generated.ds.service1.LightRequest.class,
       responseType = generated.ds.service1.LightResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
   public static io.grpc.MethodDescriptor<generated.ds.service1.LightRequest,
-      generated.ds.service1.LightResponse> getService1DoMethod() {
-    io.grpc.MethodDescriptor<generated.ds.service1.LightRequest, generated.ds.service1.LightResponse> getService1DoMethod;
-    if ((getService1DoMethod = Service1Grpc.getService1DoMethod) == null) {
+      generated.ds.service1.LightResponse> getTurnOnMethod() {
+    io.grpc.MethodDescriptor<generated.ds.service1.LightRequest, generated.ds.service1.LightResponse> getTurnOnMethod;
+    if ((getTurnOnMethod = Service1Grpc.getTurnOnMethod) == null) {
       synchronized (Service1Grpc.class) {
-        if ((getService1DoMethod = Service1Grpc.getService1DoMethod) == null) {
-          Service1Grpc.getService1DoMethod = getService1DoMethod = 
+        if ((getTurnOnMethod = Service1Grpc.getTurnOnMethod) == null) {
+          Service1Grpc.getTurnOnMethod = getTurnOnMethod = 
               io.grpc.MethodDescriptor.<generated.ds.service1.LightRequest, generated.ds.service1.LightResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
               .setFullMethodName(generateFullMethodName(
-                  "service1.Service1", "service1Do"))
+                  "service1.Service1", "TurnOn"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   generated.ds.service1.LightRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   generated.ds.service1.LightResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new Service1MethodDescriptorSupplier("service1Do"))
+                  .setSchemaDescriptor(new Service1MethodDescriptorSupplier("TurnOn"))
                   .build();
           }
         }
      }
-     return getService1DoMethod;
+     return getTurnOnMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<generated.ds.service1.LightRequest,
+      generated.ds.service1.LightResponse> getTurnOffMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "TurnOff",
+      requestType = generated.ds.service1.LightRequest.class,
+      responseType = generated.ds.service1.LightResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+  public static io.grpc.MethodDescriptor<generated.ds.service1.LightRequest,
+      generated.ds.service1.LightResponse> getTurnOffMethod() {
+    io.grpc.MethodDescriptor<generated.ds.service1.LightRequest, generated.ds.service1.LightResponse> getTurnOffMethod;
+    if ((getTurnOffMethod = Service1Grpc.getTurnOffMethod) == null) {
+      synchronized (Service1Grpc.class) {
+        if ((getTurnOffMethod = Service1Grpc.getTurnOffMethod) == null) {
+          Service1Grpc.getTurnOffMethod = getTurnOffMethod = 
+              io.grpc.MethodDescriptor.<generated.ds.service1.LightRequest, generated.ds.service1.LightResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "service1.Service1", "TurnOff"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  generated.ds.service1.LightRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  generated.ds.service1.LightResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new Service1MethodDescriptorSupplier("TurnOff"))
+                  .build();
+          }
+        }
+     }
+     return getTurnOffMethod;
   }
 
   /**
@@ -94,20 +126,34 @@ public final class Service1Grpc {
 
     /**
      */
-    public io.grpc.stub.StreamObserver<generated.ds.service1.LightRequest> service1Do(
+    public io.grpc.stub.StreamObserver<generated.ds.service1.LightRequest> turnOn(
         io.grpc.stub.StreamObserver<generated.ds.service1.LightResponse> responseObserver) {
-      return asyncUnimplementedStreamingCall(getService1DoMethod(), responseObserver);
+      return asyncUnimplementedStreamingCall(getTurnOnMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<generated.ds.service1.LightRequest> turnOff(
+        io.grpc.stub.StreamObserver<generated.ds.service1.LightResponse> responseObserver) {
+      return asyncUnimplementedStreamingCall(getTurnOffMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            getService1DoMethod(),
+            getTurnOnMethod(),
             asyncClientStreamingCall(
               new MethodHandlers<
                 generated.ds.service1.LightRequest,
                 generated.ds.service1.LightResponse>(
-                  this, METHODID_SERVICE1DO)))
+                  this, METHODID_TURN_ON)))
+          .addMethod(
+            getTurnOffMethod(),
+            asyncClientStreamingCall(
+              new MethodHandlers<
+                generated.ds.service1.LightRequest,
+                generated.ds.service1.LightResponse>(
+                  this, METHODID_TURN_OFF)))
           .build();
     }
   }
@@ -135,10 +181,18 @@ public final class Service1Grpc {
 
     /**
      */
-    public io.grpc.stub.StreamObserver<generated.ds.service1.LightRequest> service1Do(
+    public io.grpc.stub.StreamObserver<generated.ds.service1.LightRequest> turnOn(
         io.grpc.stub.StreamObserver<generated.ds.service1.LightResponse> responseObserver) {
       return asyncClientStreamingCall(
-          getChannel().newCall(getService1DoMethod(), getCallOptions()), responseObserver);
+          getChannel().newCall(getTurnOnMethod(), getCallOptions()), responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<generated.ds.service1.LightRequest> turnOff(
+        io.grpc.stub.StreamObserver<generated.ds.service1.LightResponse> responseObserver) {
+      return asyncClientStreamingCall(
+          getChannel().newCall(getTurnOffMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -186,7 +240,8 @@ public final class Service1Grpc {
     }
   }
 
-  private static final int METHODID_SERVICE1DO = 0;
+  private static final int METHODID_TURN_ON = 0;
+  private static final int METHODID_TURN_OFF = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -215,8 +270,11 @@ public final class Service1Grpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_SERVICE1DO:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.service1Do(
+        case METHODID_TURN_ON:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.turnOn(
+              (io.grpc.stub.StreamObserver<generated.ds.service1.LightResponse>) responseObserver);
+        case METHODID_TURN_OFF:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.turnOff(
               (io.grpc.stub.StreamObserver<generated.ds.service1.LightResponse>) responseObserver);
         default:
           throw new AssertionError();
@@ -269,7 +327,8 @@ public final class Service1Grpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new Service1FileDescriptorSupplier())
-              .addMethod(getService1DoMethod())
+              .addMethod(getTurnOnMethod())
+              .addMethod(getTurnOffMethod())
               .build();
         }
       }

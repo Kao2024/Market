@@ -8,26 +8,17 @@ public interface LightResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
+   * <code>string lightNumber = 1;</code>
    */
-  java.util.List<generated.ds.service1.LightStatus> 
-      getLightStatusesList();
+  java.lang.String getLightNumber();
   /**
-   * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
+   * <code>string lightNumber = 1;</code>
    */
-  generated.ds.service1.LightStatus getLightStatuses(int index);
+  com.google.protobuf.ByteString
+      getLightNumberBytes();
+
   /**
-   * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
+   * <code>bool status = 2;</code>
    */
-  int getLightStatusesCount();
-  /**
-   * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-   */
-  java.util.List<? extends generated.ds.service1.LightStatusOrBuilder> 
-      getLightStatusesOrBuilderList();
-  /**
-   * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-   */
-  generated.ds.service1.LightStatusOrBuilder getLightStatusesOrBuilder(
-      int index);
+  boolean getStatus();
 }

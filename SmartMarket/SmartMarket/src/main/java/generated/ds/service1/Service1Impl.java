@@ -20,11 +20,6 @@ public final class Service1Impl {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_service1_LightRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_service1_LightStatus_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_service1_LightStatus_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_service1_LightResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -39,11 +34,11 @@ public final class Service1Impl {
   static {
     java.lang.String[] descriptorData = {
       "\n\016service1.proto\022\010service1\"#\n\014LightReque" +
-      "st\022\023\n\013lightNumber\030\001 \001(\t\"2\n\013LightStatus\022\023" +
-      "\n\013lightNumber\030\001 \001(\t\022\016\n\006status\030\002 \001(\010\"=\n\rL" +
-      "ightResponse\022,\n\rlightStatuses\030\001 \003(\0132\025.se" +
-      "rvice1.LightStatus2M\n\010Service1\022A\n\nservic" +
-      "e1Do\022\026.service1.LightRequest\032\027.service1." +
+      "st\022\023\n\013lightNumber\030\001 \001(\t\"4\n\rLightResponse" +
+      "\022\023\n\013lightNumber\030\001 \001(\t\022\016\n\006status\030\002 \001(\0102\211\001" +
+      "\n\010Service1\022=\n\006TurnOn\022\026.service1.LightReq" +
+      "uest\032\027.service1.LightResponse\"\000(\001\022>\n\007Tur" +
+      "nOff\022\026.service1.LightRequest\032\027.service1." +
       "LightResponse\"\000(\001B\'\n\025generated.ds.servic" +
       "e1B\014Service1ImplP\001b\006proto3"
     };
@@ -65,18 +60,12 @@ public final class Service1Impl {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_service1_LightRequest_descriptor,
         new java.lang.String[] { "LightNumber", });
-    internal_static_service1_LightStatus_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_service1_LightStatus_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_service1_LightStatus_descriptor,
-        new java.lang.String[] { "LightNumber", "Status", });
     internal_static_service1_LightResponse_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(1);
     internal_static_service1_LightResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_service1_LightResponse_descriptor,
-        new java.lang.String[] { "LightStatuses", });
+        new java.lang.String[] { "LightNumber", "Status", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

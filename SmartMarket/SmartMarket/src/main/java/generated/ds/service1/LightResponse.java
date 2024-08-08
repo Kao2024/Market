@@ -16,7 +16,8 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private LightResponse() {
-    lightStatuses_ = java.util.Collections.emptyList();
+    lightNumber_ = "";
+    status_ = false;
   }
 
   @java.lang.Override
@@ -44,12 +45,14 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           case 10: {
-            if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-              lightStatuses_ = new java.util.ArrayList<generated.ds.service1.LightStatus>();
-              mutable_bitField0_ |= 0x00000001;
-            }
-            lightStatuses_.add(
-                input.readMessage(generated.ds.service1.LightStatus.parser(), extensionRegistry));
+            java.lang.String s = input.readStringRequireUtf8();
+
+            lightNumber_ = s;
+            break;
+          }
+          case 16: {
+
+            status_ = input.readBool();
             break;
           }
           default: {
@@ -67,9 +70,6 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
-      if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-        lightStatuses_ = java.util.Collections.unmodifiableList(lightStatuses_);
-      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -87,39 +87,47 @@ private static final long serialVersionUID = 0L;
             generated.ds.service1.LightResponse.class, generated.ds.service1.LightResponse.Builder.class);
   }
 
-  public static final int LIGHTSTATUSES_FIELD_NUMBER = 1;
-  private java.util.List<generated.ds.service1.LightStatus> lightStatuses_;
+  public static final int LIGHTNUMBER_FIELD_NUMBER = 1;
+  private volatile java.lang.Object lightNumber_;
   /**
-   * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
+   * <code>string lightNumber = 1;</code>
    */
-  public java.util.List<generated.ds.service1.LightStatus> getLightStatusesList() {
-    return lightStatuses_;
+  public java.lang.String getLightNumber() {
+    java.lang.Object ref = lightNumber_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      lightNumber_ = s;
+      return s;
+    }
   }
   /**
-   * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
+   * <code>string lightNumber = 1;</code>
    */
-  public java.util.List<? extends generated.ds.service1.LightStatusOrBuilder> 
-      getLightStatusesOrBuilderList() {
-    return lightStatuses_;
+  public com.google.protobuf.ByteString
+      getLightNumberBytes() {
+    java.lang.Object ref = lightNumber_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      lightNumber_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
+
+  public static final int STATUS_FIELD_NUMBER = 2;
+  private boolean status_;
   /**
-   * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
+   * <code>bool status = 2;</code>
    */
-  public int getLightStatusesCount() {
-    return lightStatuses_.size();
-  }
-  /**
-   * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-   */
-  public generated.ds.service1.LightStatus getLightStatuses(int index) {
-    return lightStatuses_.get(index);
-  }
-  /**
-   * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-   */
-  public generated.ds.service1.LightStatusOrBuilder getLightStatusesOrBuilder(
-      int index) {
-    return lightStatuses_.get(index);
+  public boolean getStatus() {
+    return status_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -136,8 +144,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    for (int i = 0; i < lightStatuses_.size(); i++) {
-      output.writeMessage(1, lightStatuses_.get(i));
+    if (!getLightNumberBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, lightNumber_);
+    }
+    if (status_ != false) {
+      output.writeBool(2, status_);
     }
     unknownFields.writeTo(output);
   }
@@ -148,9 +159,12 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    for (int i = 0; i < lightStatuses_.size(); i++) {
+    if (!getLightNumberBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, lightNumber_);
+    }
+    if (status_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, lightStatuses_.get(i));
+        .computeBoolSize(2, status_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -168,8 +182,10 @@ private static final long serialVersionUID = 0L;
     generated.ds.service1.LightResponse other = (generated.ds.service1.LightResponse) obj;
 
     boolean result = true;
-    result = result && getLightStatusesList()
-        .equals(other.getLightStatusesList());
+    result = result && getLightNumber()
+        .equals(other.getLightNumber());
+    result = result && (getStatus()
+        == other.getStatus());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -181,10 +197,11 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (getLightStatusesCount() > 0) {
-      hash = (37 * hash) + LIGHTSTATUSES_FIELD_NUMBER;
-      hash = (53 * hash) + getLightStatusesList().hashCode();
-    }
+    hash = (37 * hash) + LIGHTNUMBER_FIELD_NUMBER;
+    hash = (53 * hash) + getLightNumber().hashCode();
+    hash = (37 * hash) + STATUS_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getStatus());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -313,18 +330,15 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getLightStatusesFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (lightStatusesBuilder_ == null) {
-        lightStatuses_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-      } else {
-        lightStatusesBuilder_.clear();
-      }
+      lightNumber_ = "";
+
+      status_ = false;
+
       return this;
     }
 
@@ -351,16 +365,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public generated.ds.service1.LightResponse buildPartial() {
       generated.ds.service1.LightResponse result = new generated.ds.service1.LightResponse(this);
-      int from_bitField0_ = bitField0_;
-      if (lightStatusesBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          lightStatuses_ = java.util.Collections.unmodifiableList(lightStatuses_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.lightStatuses_ = lightStatuses_;
-      } else {
-        result.lightStatuses_ = lightStatusesBuilder_.build();
-      }
+      result.lightNumber_ = lightNumber_;
+      result.status_ = status_;
       onBuilt();
       return result;
     }
@@ -409,31 +415,12 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(generated.ds.service1.LightResponse other) {
       if (other == generated.ds.service1.LightResponse.getDefaultInstance()) return this;
-      if (lightStatusesBuilder_ == null) {
-        if (!other.lightStatuses_.isEmpty()) {
-          if (lightStatuses_.isEmpty()) {
-            lightStatuses_ = other.lightStatuses_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureLightStatusesIsMutable();
-            lightStatuses_.addAll(other.lightStatuses_);
-          }
-          onChanged();
-        }
-      } else {
-        if (!other.lightStatuses_.isEmpty()) {
-          if (lightStatusesBuilder_.isEmpty()) {
-            lightStatusesBuilder_.dispose();
-            lightStatusesBuilder_ = null;
-            lightStatuses_ = other.lightStatuses_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-            lightStatusesBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getLightStatusesFieldBuilder() : null;
-          } else {
-            lightStatusesBuilder_.addAllMessages(other.lightStatuses_);
-          }
-        }
+      if (!other.getLightNumber().isEmpty()) {
+        lightNumber_ = other.lightNumber_;
+        onChanged();
+      }
+      if (other.getStatus() != false) {
+        setStatus(other.getStatus());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -463,246 +450,100 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    private int bitField0_;
 
-    private java.util.List<generated.ds.service1.LightStatus> lightStatuses_ =
-      java.util.Collections.emptyList();
-    private void ensureLightStatusesIsMutable() {
-      if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-        lightStatuses_ = new java.util.ArrayList<generated.ds.service1.LightStatus>(lightStatuses_);
-        bitField0_ |= 0x00000001;
-       }
+    private java.lang.Object lightNumber_ = "";
+    /**
+     * <code>string lightNumber = 1;</code>
+     */
+    public java.lang.String getLightNumber() {
+      java.lang.Object ref = lightNumber_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        lightNumber_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string lightNumber = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getLightNumberBytes() {
+      java.lang.Object ref = lightNumber_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        lightNumber_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string lightNumber = 1;</code>
+     */
+    public Builder setLightNumber(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      lightNumber_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string lightNumber = 1;</code>
+     */
+    public Builder clearLightNumber() {
+      
+      lightNumber_ = getDefaultInstance().getLightNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string lightNumber = 1;</code>
+     */
+    public Builder setLightNumberBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      lightNumber_ = value;
+      onChanged();
+      return this;
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        generated.ds.service1.LightStatus, generated.ds.service1.LightStatus.Builder, generated.ds.service1.LightStatusOrBuilder> lightStatusesBuilder_;
-
+    private boolean status_ ;
     /**
-     * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
+     * <code>bool status = 2;</code>
      */
-    public java.util.List<generated.ds.service1.LightStatus> getLightStatusesList() {
-      if (lightStatusesBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(lightStatuses_);
-      } else {
-        return lightStatusesBuilder_.getMessageList();
-      }
+    public boolean getStatus() {
+      return status_;
     }
     /**
-     * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
+     * <code>bool status = 2;</code>
      */
-    public int getLightStatusesCount() {
-      if (lightStatusesBuilder_ == null) {
-        return lightStatuses_.size();
-      } else {
-        return lightStatusesBuilder_.getCount();
-      }
-    }
-    /**
-     * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-     */
-    public generated.ds.service1.LightStatus getLightStatuses(int index) {
-      if (lightStatusesBuilder_ == null) {
-        return lightStatuses_.get(index);
-      } else {
-        return lightStatusesBuilder_.getMessage(index);
-      }
-    }
-    /**
-     * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-     */
-    public Builder setLightStatuses(
-        int index, generated.ds.service1.LightStatus value) {
-      if (lightStatusesBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureLightStatusesIsMutable();
-        lightStatuses_.set(index, value);
-        onChanged();
-      } else {
-        lightStatusesBuilder_.setMessage(index, value);
-      }
+    public Builder setStatus(boolean value) {
+      
+      status_ = value;
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
+     * <code>bool status = 2;</code>
      */
-    public Builder setLightStatuses(
-        int index, generated.ds.service1.LightStatus.Builder builderForValue) {
-      if (lightStatusesBuilder_ == null) {
-        ensureLightStatusesIsMutable();
-        lightStatuses_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        lightStatusesBuilder_.setMessage(index, builderForValue.build());
-      }
+    public Builder clearStatus() {
+      
+      status_ = false;
+      onChanged();
       return this;
-    }
-    /**
-     * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-     */
-    public Builder addLightStatuses(generated.ds.service1.LightStatus value) {
-      if (lightStatusesBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureLightStatusesIsMutable();
-        lightStatuses_.add(value);
-        onChanged();
-      } else {
-        lightStatusesBuilder_.addMessage(value);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-     */
-    public Builder addLightStatuses(
-        int index, generated.ds.service1.LightStatus value) {
-      if (lightStatusesBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureLightStatusesIsMutable();
-        lightStatuses_.add(index, value);
-        onChanged();
-      } else {
-        lightStatusesBuilder_.addMessage(index, value);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-     */
-    public Builder addLightStatuses(
-        generated.ds.service1.LightStatus.Builder builderForValue) {
-      if (lightStatusesBuilder_ == null) {
-        ensureLightStatusesIsMutable();
-        lightStatuses_.add(builderForValue.build());
-        onChanged();
-      } else {
-        lightStatusesBuilder_.addMessage(builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-     */
-    public Builder addLightStatuses(
-        int index, generated.ds.service1.LightStatus.Builder builderForValue) {
-      if (lightStatusesBuilder_ == null) {
-        ensureLightStatusesIsMutable();
-        lightStatuses_.add(index, builderForValue.build());
-        onChanged();
-      } else {
-        lightStatusesBuilder_.addMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-     */
-    public Builder addAllLightStatuses(
-        java.lang.Iterable<? extends generated.ds.service1.LightStatus> values) {
-      if (lightStatusesBuilder_ == null) {
-        ensureLightStatusesIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, lightStatuses_);
-        onChanged();
-      } else {
-        lightStatusesBuilder_.addAllMessages(values);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-     */
-    public Builder clearLightStatuses() {
-      if (lightStatusesBuilder_ == null) {
-        lightStatuses_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-      } else {
-        lightStatusesBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-     */
-    public Builder removeLightStatuses(int index) {
-      if (lightStatusesBuilder_ == null) {
-        ensureLightStatusesIsMutable();
-        lightStatuses_.remove(index);
-        onChanged();
-      } else {
-        lightStatusesBuilder_.remove(index);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-     */
-    public generated.ds.service1.LightStatus.Builder getLightStatusesBuilder(
-        int index) {
-      return getLightStatusesFieldBuilder().getBuilder(index);
-    }
-    /**
-     * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-     */
-    public generated.ds.service1.LightStatusOrBuilder getLightStatusesOrBuilder(
-        int index) {
-      if (lightStatusesBuilder_ == null) {
-        return lightStatuses_.get(index);  } else {
-        return lightStatusesBuilder_.getMessageOrBuilder(index);
-      }
-    }
-    /**
-     * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-     */
-    public java.util.List<? extends generated.ds.service1.LightStatusOrBuilder> 
-         getLightStatusesOrBuilderList() {
-      if (lightStatusesBuilder_ != null) {
-        return lightStatusesBuilder_.getMessageOrBuilderList();
-      } else {
-        return java.util.Collections.unmodifiableList(lightStatuses_);
-      }
-    }
-    /**
-     * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-     */
-    public generated.ds.service1.LightStatus.Builder addLightStatusesBuilder() {
-      return getLightStatusesFieldBuilder().addBuilder(
-          generated.ds.service1.LightStatus.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-     */
-    public generated.ds.service1.LightStatus.Builder addLightStatusesBuilder(
-        int index) {
-      return getLightStatusesFieldBuilder().addBuilder(
-          index, generated.ds.service1.LightStatus.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .service1.LightStatus lightStatuses = 1;</code>
-     */
-    public java.util.List<generated.ds.service1.LightStatus.Builder> 
-         getLightStatusesBuilderList() {
-      return getLightStatusesFieldBuilder().getBuilderList();
-    }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        generated.ds.service1.LightStatus, generated.ds.service1.LightStatus.Builder, generated.ds.service1.LightStatusOrBuilder> 
-        getLightStatusesFieldBuilder() {
-      if (lightStatusesBuilder_ == null) {
-        lightStatusesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            generated.ds.service1.LightStatus, generated.ds.service1.LightStatus.Builder, generated.ds.service1.LightStatusOrBuilder>(
-                lightStatuses_,
-                ((bitField0_ & 0x00000001) == 0x00000001),
-                getParentForChildren(),
-                isClean());
-        lightStatuses_ = null;
-      }
-      return lightStatusesBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
