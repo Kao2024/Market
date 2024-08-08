@@ -31,35 +31,67 @@ public final class Service2Grpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<generated.ds.service2.RequestMessage,
-      generated.ds.service2.ResponseMessage> getService2DoMethod;
+      generated.ds.service2.ResponseMessage> getInStockMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "service2Do",
+      fullMethodName = SERVICE_NAME + '/' + "InStock",
       requestType = generated.ds.service2.RequestMessage.class,
       responseType = generated.ds.service2.ResponseMessage.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<generated.ds.service2.RequestMessage,
-      generated.ds.service2.ResponseMessage> getService2DoMethod() {
-    io.grpc.MethodDescriptor<generated.ds.service2.RequestMessage, generated.ds.service2.ResponseMessage> getService2DoMethod;
-    if ((getService2DoMethod = Service2Grpc.getService2DoMethod) == null) {
+      generated.ds.service2.ResponseMessage> getInStockMethod() {
+    io.grpc.MethodDescriptor<generated.ds.service2.RequestMessage, generated.ds.service2.ResponseMessage> getInStockMethod;
+    if ((getInStockMethod = Service2Grpc.getInStockMethod) == null) {
       synchronized (Service2Grpc.class) {
-        if ((getService2DoMethod = Service2Grpc.getService2DoMethod) == null) {
-          Service2Grpc.getService2DoMethod = getService2DoMethod = 
+        if ((getInStockMethod = Service2Grpc.getInStockMethod) == null) {
+          Service2Grpc.getInStockMethod = getInStockMethod = 
               io.grpc.MethodDescriptor.<generated.ds.service2.RequestMessage, generated.ds.service2.ResponseMessage>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "service2.Service2", "service2Do"))
+                  "service2.Service2", "InStock"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   generated.ds.service2.RequestMessage.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   generated.ds.service2.ResponseMessage.getDefaultInstance()))
-                  .setSchemaDescriptor(new Service2MethodDescriptorSupplier("service2Do"))
+                  .setSchemaDescriptor(new Service2MethodDescriptorSupplier("InStock"))
                   .build();
           }
         }
      }
-     return getService2DoMethod;
+     return getInStockMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<generated.ds.service2.StockRequest,
+      generated.ds.service2.ResponseMessage> getAllStockMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "AllStock",
+      requestType = generated.ds.service2.StockRequest.class,
+      responseType = generated.ds.service2.ResponseMessage.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<generated.ds.service2.StockRequest,
+      generated.ds.service2.ResponseMessage> getAllStockMethod() {
+    io.grpc.MethodDescriptor<generated.ds.service2.StockRequest, generated.ds.service2.ResponseMessage> getAllStockMethod;
+    if ((getAllStockMethod = Service2Grpc.getAllStockMethod) == null) {
+      synchronized (Service2Grpc.class) {
+        if ((getAllStockMethod = Service2Grpc.getAllStockMethod) == null) {
+          Service2Grpc.getAllStockMethod = getAllStockMethod = 
+              io.grpc.MethodDescriptor.<generated.ds.service2.StockRequest, generated.ds.service2.ResponseMessage>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "service2.Service2", "AllStock"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  generated.ds.service2.StockRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  generated.ds.service2.ResponseMessage.getDefaultInstance()))
+                  .setSchemaDescriptor(new Service2MethodDescriptorSupplier("AllStock"))
+                  .build();
+          }
+        }
+     }
+     return getAllStockMethod;
   }
 
   /**
@@ -94,20 +126,34 @@ public final class Service2Grpc {
 
     /**
      */
-    public void service2Do(generated.ds.service2.RequestMessage request,
+    public void inStock(generated.ds.service2.RequestMessage request,
         io.grpc.stub.StreamObserver<generated.ds.service2.ResponseMessage> responseObserver) {
-      asyncUnimplementedUnaryCall(getService2DoMethod(), responseObserver);
+      asyncUnimplementedUnaryCall(getInStockMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void allStock(generated.ds.service2.StockRequest request,
+        io.grpc.stub.StreamObserver<generated.ds.service2.ResponseMessage> responseObserver) {
+      asyncUnimplementedUnaryCall(getAllStockMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            getService2DoMethod(),
+            getInStockMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 generated.ds.service2.RequestMessage,
                 generated.ds.service2.ResponseMessage>(
-                  this, METHODID_SERVICE2DO)))
+                  this, METHODID_IN_STOCK)))
+          .addMethod(
+            getAllStockMethod(),
+            asyncServerStreamingCall(
+              new MethodHandlers<
+                generated.ds.service2.StockRequest,
+                generated.ds.service2.ResponseMessage>(
+                  this, METHODID_ALL_STOCK)))
           .build();
     }
   }
@@ -135,10 +181,18 @@ public final class Service2Grpc {
 
     /**
      */
-    public void service2Do(generated.ds.service2.RequestMessage request,
+    public void inStock(generated.ds.service2.RequestMessage request,
         io.grpc.stub.StreamObserver<generated.ds.service2.ResponseMessage> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getService2DoMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getInStockMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void allStock(generated.ds.service2.StockRequest request,
+        io.grpc.stub.StreamObserver<generated.ds.service2.ResponseMessage> responseObserver) {
+      asyncServerStreamingCall(
+          getChannel().newCall(getAllStockMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -165,9 +219,17 @@ public final class Service2Grpc {
 
     /**
      */
-    public generated.ds.service2.ResponseMessage service2Do(generated.ds.service2.RequestMessage request) {
+    public generated.ds.service2.ResponseMessage inStock(generated.ds.service2.RequestMessage request) {
       return blockingUnaryCall(
-          getChannel(), getService2DoMethod(), getCallOptions(), request);
+          getChannel(), getInStockMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<generated.ds.service2.ResponseMessage> allStock(
+        generated.ds.service2.StockRequest request) {
+      return blockingServerStreamingCall(
+          getChannel(), getAllStockMethod(), getCallOptions(), request);
     }
   }
 
@@ -194,14 +256,15 @@ public final class Service2Grpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<generated.ds.service2.ResponseMessage> service2Do(
+    public com.google.common.util.concurrent.ListenableFuture<generated.ds.service2.ResponseMessage> inStock(
         generated.ds.service2.RequestMessage request) {
       return futureUnaryCall(
-          getChannel().newCall(getService2DoMethod(), getCallOptions()), request);
+          getChannel().newCall(getInStockMethod(), getCallOptions()), request);
     }
   }
 
-  private static final int METHODID_SERVICE2DO = 0;
+  private static final int METHODID_IN_STOCK = 0;
+  private static final int METHODID_ALL_STOCK = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -220,8 +283,12 @@ public final class Service2Grpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_SERVICE2DO:
-          serviceImpl.service2Do((generated.ds.service2.RequestMessage) request,
+        case METHODID_IN_STOCK:
+          serviceImpl.inStock((generated.ds.service2.RequestMessage) request,
+              (io.grpc.stub.StreamObserver<generated.ds.service2.ResponseMessage>) responseObserver);
+          break;
+        case METHODID_ALL_STOCK:
+          serviceImpl.allStock((generated.ds.service2.StockRequest) request,
               (io.grpc.stub.StreamObserver<generated.ds.service2.ResponseMessage>) responseObserver);
           break;
         default:
@@ -285,7 +352,8 @@ public final class Service2Grpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new Service2FileDescriptorSupplier())
-              .addMethod(getService2DoMethod())
+              .addMethod(getInStockMethod())
+              .addMethod(getAllStockMethod())
               .build();
         }
       }

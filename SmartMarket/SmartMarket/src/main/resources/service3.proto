@@ -20,3 +20,5 @@ message ResponseMessage {
     string ProductNumber = 1;
     int32 price = 2;
 }
+
+

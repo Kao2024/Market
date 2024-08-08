@@ -5,6 +5,7 @@ import java.io.IOException;
 import generated.ds.service2.RequestMessage;
 import generated.ds.service2.ResponseMessage;
 import generated.ds.service2.Service2Grpc.Service2ImplBase; 
+import generated.ds.service2.StockRequest;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
@@ -39,19 +40,32 @@ public class Inventory extends Service2ImplBase{
     }
 
     @Override
-    public void service2Do(RequestMessage request, StreamObserver<ResponseMessage> responseObserver) {
+    public void inStock(RequestMessage request, StreamObserver<ResponseMessage> responseObserver) {
 
 	//prepare the value to be set back
 	String ProductNumber = request.getProductNumber();
         int stock = inventory.getOrDefault(ProductNumber, 0);
 		
 	//preparing the response message
-	ResponseMessage reply1 = ResponseMessage.newBuilder()
+	ResponseMessage reply = ResponseMessage.newBuilder()
                 .setProductNumber(ProductNumber)
                 .setStock(stock)
                 .build();
 
-	responseObserver.onNext( reply1 ); 
+	responseObserver.onNext( reply ); 
 	responseObserver.onCompleted();
-	}
+    }
+    
+    @Override
+    public void allStock(StockRequest request, StreamObserver<ResponseMessage> responseObserver) {
+        inventory.forEach((product, stock) -> {
+            ResponseMessage response = ResponseMessage.newBuilder()
+                    .setProductNumber(product)
+                    .setStock(stock)
+                    .build();
+            responseObserver.onNext(response);
+            
+        });
+        responseObserver.onCompleted();
+    }
 }

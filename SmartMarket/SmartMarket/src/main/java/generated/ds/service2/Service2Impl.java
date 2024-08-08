@@ -24,6 +24,11 @@ public final class Service2Impl {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_service2_ResponseMessage_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_service2_StockRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_service2_StockRequest_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -36,10 +41,12 @@ public final class Service2Impl {
       "\n\016service2.proto\022\010service2\"\'\n\016RequestMes" +
       "sage\022\025\n\rProductNumber\030\001 \001(\t\"7\n\017ResponseM" +
       "essage\022\025\n\rProductNumber\030\001 \001(\t\022\r\n\005stock\030\002" +
-      " \001(\0052O\n\010Service2\022C\n\nservice2Do\022\030.service" +
-      "2.RequestMessage\032\031.service2.ResponseMess" +
-      "age\"\000B\'\n\025generated.ds.service2B\014Service2" +
-      "ImplP\001b\006proto3"
+      " \001(\005\" \n\014StockRequest\022\020\n\010AllStock\030\001 \001(\t2\217" +
+      "\001\n\010Service2\022@\n\007InStock\022\030.service2.Reques" +
+      "tMessage\032\031.service2.ResponseMessage\"\000\022A\n" +
+      "\010AllStock\022\026.service2.StockRequest\032\031.serv" +
+      "ice2.ResponseMessage\"\0000\001B\'\n\025generated.ds" +
+      ".service2B\014Service2ImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -65,6 +72,12 @@ public final class Service2Impl {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_service2_ResponseMessage_descriptor,
         new java.lang.String[] { "ProductNumber", "Stock", });
+    internal_static_service2_StockRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_service2_StockRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_service2_StockRequest_descriptor,
+        new java.lang.String[] { "AllStock", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

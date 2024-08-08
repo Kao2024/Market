@@ -36,8 +36,8 @@ public class LightSwitch extends Service1ImplBase{
     }
 
 
-   
-    public StreamObserver<LightRequest> TurnOn(StreamObserver<LightResponse> responseObserver) {
+    @Override
+    public StreamObserver<LightRequest> turnOn(StreamObserver<LightResponse> responseObserver) {
         return new StreamObserver<LightRequest>() {
             @Override
             public void onNext(LightRequest request) {
@@ -63,8 +63,9 @@ public class LightSwitch extends Service1ImplBase{
             }
         };
     }
-   
-    public StreamObserver<LightRequest> TurnOff(StreamObserver<LightResponse> responseObserver) {
+    
+    @Override
+    public StreamObserver<LightRequest> turnOff(StreamObserver<LightResponse> responseObserver) {
         return new StreamObserver<LightRequest>() {
             @Override
             public void onNext(LightRequest request) {

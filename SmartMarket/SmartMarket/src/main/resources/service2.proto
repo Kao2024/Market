@@ -8,7 +8,8 @@ package service2;
 
 // Interface exported by the server.
 service Service2 {
-    rpc service2Do(RequestMessage) returns (ResponseMessage) {}
+    rpc InStock(RequestMessage) returns (ResponseMessage) {}
+    rpc AllStock(StockRequest) returns (stream ResponseMessage) {}
     
 }
 
@@ -19,4 +20,8 @@ message RequestMessage {
 message ResponseMessage {
     string ProductNumber = 1;
     int32 stock = 2;
+}
+
+message StockRequest{
+    string AllStock = 1;
 }

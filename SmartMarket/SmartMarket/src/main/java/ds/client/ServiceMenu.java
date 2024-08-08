@@ -10,6 +10,7 @@ import generated.ds.service1.LightResponse;
 import generated.ds.service1.Service1Grpc;
 import generated.ds.service2.ResponseMessage;
 import generated.ds.service2.Service2Grpc;
+import generated.ds.service2.StockRequest;
 import generated.ds.service3.Service3Grpc;
 import generated.ds.service4.Service4Grpc;
 import io.grpc.ManagedChannel;
@@ -349,9 +350,16 @@ public class ServiceMenu extends javax.swing.JFrame {
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
         Service2Grpc.Service2BlockingStub stub = Service2Grpc.newBlockingStub(channel);
         
-        ResponseMessage request = ResponseMessage.newBuilder().setProductNumber("").build();
-        //ResponseMessage response = stub.getAllStock(request);
-        //StockOutputTa.setText("All stock:\n" + response.getStockList());
+        StockRequest request = StockRequest.newBuilder().setAllStock("All stock").build();
+        StringBuilder allStock = new StringBuilder("All stock:\n");
+        stub.allStock(request).forEachRemaining(response -> {
+            allStock.append(response.getProductNumber())
+                    .append(": ")
+                    .append(response.getStock())
+                    .append("\n");
+            });
+        StockOutputTa.setText(allStock.toString());
+        channel.shutdown();
     }//GEN-LAST:event_AllStockBtnActionPerformed
 
     private void StockBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StockBtnActionPerformed
@@ -360,11 +368,11 @@ public class ServiceMenu extends javax.swing.JFrame {
         Service2Grpc.Service2BlockingStub blockingStub = Service2Grpc.newBlockingStub(channel);
         
         //preparing message to send
-        String productNumber = PNinputTf.getText();
+        String productNumber = PNStockTf.getText();
         generated.ds.service2.RequestMessage request = generated.ds.service2.RequestMessage.newBuilder().setProductNumber(productNumber).build();
 
         //retrieving reply from service
-        generated.ds.service2.ResponseMessage response =  blockingStub.service2Do(request);
+        generated.ds.service2.ResponseMessage response =  blockingStub.inStock(request);
         StockOutputTa.setText(response.getProductNumber() + " : " + response.getStock());
         channel.shutdown();
 
