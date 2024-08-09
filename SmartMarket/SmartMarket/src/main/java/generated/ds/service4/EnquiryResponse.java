@@ -4,19 +4,20 @@
 package generated.ds.service4;
 
 /**
- * Protobuf type {@code service4.ResponseMessage}
+ * Protobuf type {@code service4.EnquiryResponse}
  */
-public  final class ResponseMessage extends
+public  final class EnquiryResponse extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:service4.ResponseMessage)
-    ResponseMessageOrBuilder {
+    // @@protoc_insertion_point(message_implements:service4.EnquiryResponse)
+    EnquiryResponseOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use ResponseMessage.newBuilder() to construct.
-  private ResponseMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use EnquiryResponse.newBuilder() to construct.
+  private EnquiryResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private ResponseMessage() {
-    length_ = 0;
+  private EnquiryResponse() {
+    productNumber_ = "";
+    price_ = 0;
   }
 
   @java.lang.Override
@@ -24,7 +25,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private ResponseMessage(
+  private EnquiryResponse(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -43,9 +44,15 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            length_ = input.readInt32();
+            productNumber_ = s;
+            break;
+          }
+          case 16: {
+
+            price_ = input.readInt32();
             break;
           }
           default: {
@@ -69,24 +76,58 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return generated.ds.service4.Service4Impl.internal_static_service4_ResponseMessage_descriptor;
+    return generated.ds.service4.Service4Impl.internal_static_service4_EnquiryResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return generated.ds.service4.Service4Impl.internal_static_service4_ResponseMessage_fieldAccessorTable
+    return generated.ds.service4.Service4Impl.internal_static_service4_EnquiryResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            generated.ds.service4.ResponseMessage.class, generated.ds.service4.ResponseMessage.Builder.class);
+            generated.ds.service4.EnquiryResponse.class, generated.ds.service4.EnquiryResponse.Builder.class);
   }
 
-  public static final int LENGTH_FIELD_NUMBER = 1;
-  private int length_;
+  public static final int PRODUCTNUMBER_FIELD_NUMBER = 1;
+  private volatile java.lang.Object productNumber_;
   /**
-   * <code>int32 length = 1;</code>
+   * <code>string ProductNumber = 1;</code>
    */
-  public int getLength() {
-    return length_;
+  public java.lang.String getProductNumber() {
+    java.lang.Object ref = productNumber_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      productNumber_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string ProductNumber = 1;</code>
+   */
+  public com.google.protobuf.ByteString
+      getProductNumberBytes() {
+    java.lang.Object ref = productNumber_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      productNumber_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int PRICE_FIELD_NUMBER = 2;
+  private int price_;
+  /**
+   * <code>int32 price = 2;</code>
+   */
+  public int getPrice() {
+    return price_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -103,8 +144,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (length_ != 0) {
-      output.writeInt32(1, length_);
+    if (!getProductNumberBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, productNumber_);
+    }
+    if (price_ != 0) {
+      output.writeInt32(2, price_);
     }
     unknownFields.writeTo(output);
   }
@@ -115,9 +159,12 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (length_ != 0) {
+    if (!getProductNumberBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, productNumber_);
+    }
+    if (price_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, length_);
+        .computeInt32Size(2, price_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -129,14 +176,16 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof generated.ds.service4.ResponseMessage)) {
+    if (!(obj instanceof generated.ds.service4.EnquiryResponse)) {
       return super.equals(obj);
     }
-    generated.ds.service4.ResponseMessage other = (generated.ds.service4.ResponseMessage) obj;
+    generated.ds.service4.EnquiryResponse other = (generated.ds.service4.EnquiryResponse) obj;
 
     boolean result = true;
-    result = result && (getLength()
-        == other.getLength());
+    result = result && getProductNumber()
+        .equals(other.getProductNumber());
+    result = result && (getPrice()
+        == other.getPrice());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -148,76 +197,78 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + LENGTH_FIELD_NUMBER;
-    hash = (53 * hash) + getLength();
+    hash = (37 * hash) + PRODUCTNUMBER_FIELD_NUMBER;
+    hash = (53 * hash) + getProductNumber().hashCode();
+    hash = (37 * hash) + PRICE_FIELD_NUMBER;
+    hash = (53 * hash) + getPrice();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static generated.ds.service4.ResponseMessage parseFrom(
+  public static generated.ds.service4.EnquiryResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static generated.ds.service4.ResponseMessage parseFrom(
+  public static generated.ds.service4.EnquiryResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static generated.ds.service4.ResponseMessage parseFrom(
+  public static generated.ds.service4.EnquiryResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static generated.ds.service4.ResponseMessage parseFrom(
+  public static generated.ds.service4.EnquiryResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static generated.ds.service4.ResponseMessage parseFrom(byte[] data)
+  public static generated.ds.service4.EnquiryResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static generated.ds.service4.ResponseMessage parseFrom(
+  public static generated.ds.service4.EnquiryResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static generated.ds.service4.ResponseMessage parseFrom(java.io.InputStream input)
+  public static generated.ds.service4.EnquiryResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static generated.ds.service4.ResponseMessage parseFrom(
+  public static generated.ds.service4.EnquiryResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static generated.ds.service4.ResponseMessage parseDelimitedFrom(java.io.InputStream input)
+  public static generated.ds.service4.EnquiryResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static generated.ds.service4.ResponseMessage parseDelimitedFrom(
+  public static generated.ds.service4.EnquiryResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static generated.ds.service4.ResponseMessage parseFrom(
+  public static generated.ds.service4.EnquiryResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static generated.ds.service4.ResponseMessage parseFrom(
+  public static generated.ds.service4.EnquiryResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -230,7 +281,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(generated.ds.service4.ResponseMessage prototype) {
+  public static Builder newBuilder(generated.ds.service4.EnquiryResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -246,26 +297,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code service4.ResponseMessage}
+   * Protobuf type {@code service4.EnquiryResponse}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:service4.ResponseMessage)
-      generated.ds.service4.ResponseMessageOrBuilder {
+      // @@protoc_insertion_point(builder_implements:service4.EnquiryResponse)
+      generated.ds.service4.EnquiryResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return generated.ds.service4.Service4Impl.internal_static_service4_ResponseMessage_descriptor;
+      return generated.ds.service4.Service4Impl.internal_static_service4_EnquiryResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return generated.ds.service4.Service4Impl.internal_static_service4_ResponseMessage_fieldAccessorTable
+      return generated.ds.service4.Service4Impl.internal_static_service4_EnquiryResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              generated.ds.service4.ResponseMessage.class, generated.ds.service4.ResponseMessage.Builder.class);
+              generated.ds.service4.EnquiryResponse.class, generated.ds.service4.EnquiryResponse.Builder.class);
     }
 
-    // Construct using generated.ds.service4.ResponseMessage.newBuilder()
+    // Construct using generated.ds.service4.EnquiryResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -283,7 +334,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      length_ = 0;
+      productNumber_ = "";
+
+      price_ = 0;
 
       return this;
     }
@@ -291,17 +344,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return generated.ds.service4.Service4Impl.internal_static_service4_ResponseMessage_descriptor;
+      return generated.ds.service4.Service4Impl.internal_static_service4_EnquiryResponse_descriptor;
     }
 
     @java.lang.Override
-    public generated.ds.service4.ResponseMessage getDefaultInstanceForType() {
-      return generated.ds.service4.ResponseMessage.getDefaultInstance();
+    public generated.ds.service4.EnquiryResponse getDefaultInstanceForType() {
+      return generated.ds.service4.EnquiryResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public generated.ds.service4.ResponseMessage build() {
-      generated.ds.service4.ResponseMessage result = buildPartial();
+    public generated.ds.service4.EnquiryResponse build() {
+      generated.ds.service4.EnquiryResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -309,9 +362,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public generated.ds.service4.ResponseMessage buildPartial() {
-      generated.ds.service4.ResponseMessage result = new generated.ds.service4.ResponseMessage(this);
-      result.length_ = length_;
+    public generated.ds.service4.EnquiryResponse buildPartial() {
+      generated.ds.service4.EnquiryResponse result = new generated.ds.service4.EnquiryResponse(this);
+      result.productNumber_ = productNumber_;
+      result.price_ = price_;
       onBuilt();
       return result;
     }
@@ -350,18 +404,22 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof generated.ds.service4.ResponseMessage) {
-        return mergeFrom((generated.ds.service4.ResponseMessage)other);
+      if (other instanceof generated.ds.service4.EnquiryResponse) {
+        return mergeFrom((generated.ds.service4.EnquiryResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(generated.ds.service4.ResponseMessage other) {
-      if (other == generated.ds.service4.ResponseMessage.getDefaultInstance()) return this;
-      if (other.getLength() != 0) {
-        setLength(other.getLength());
+    public Builder mergeFrom(generated.ds.service4.EnquiryResponse other) {
+      if (other == generated.ds.service4.EnquiryResponse.getDefaultInstance()) return this;
+      if (!other.getProductNumber().isEmpty()) {
+        productNumber_ = other.productNumber_;
+        onChanged();
+      }
+      if (other.getPrice() != 0) {
+        setPrice(other.getPrice());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -378,11 +436,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      generated.ds.service4.ResponseMessage parsedMessage = null;
+      generated.ds.service4.EnquiryResponse parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (generated.ds.service4.ResponseMessage) e.getUnfinishedMessage();
+        parsedMessage = (generated.ds.service4.EnquiryResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -392,28 +450,97 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int length_ ;
+    private java.lang.Object productNumber_ = "";
     /**
-     * <code>int32 length = 1;</code>
+     * <code>string ProductNumber = 1;</code>
      */
-    public int getLength() {
-      return length_;
+    public java.lang.String getProductNumber() {
+      java.lang.Object ref = productNumber_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        productNumber_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>int32 length = 1;</code>
+     * <code>string ProductNumber = 1;</code>
      */
-    public Builder setLength(int value) {
-      
-      length_ = value;
+    public com.google.protobuf.ByteString
+        getProductNumberBytes() {
+      java.lang.Object ref = productNumber_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        productNumber_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string ProductNumber = 1;</code>
+     */
+    public Builder setProductNumber(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      productNumber_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 length = 1;</code>
+     * <code>string ProductNumber = 1;</code>
      */
-    public Builder clearLength() {
+    public Builder clearProductNumber() {
       
-      length_ = 0;
+      productNumber_ = getDefaultInstance().getProductNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string ProductNumber = 1;</code>
+     */
+    public Builder setProductNumberBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      productNumber_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int price_ ;
+    /**
+     * <code>int32 price = 2;</code>
+     */
+    public int getPrice() {
+      return price_;
+    }
+    /**
+     * <code>int32 price = 2;</code>
+     */
+    public Builder setPrice(int value) {
+      
+      price_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 price = 2;</code>
+     */
+    public Builder clearPrice() {
+      
+      price_ = 0;
       onChanged();
       return this;
     }
@@ -430,41 +557,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:service4.ResponseMessage)
+    // @@protoc_insertion_point(builder_scope:service4.EnquiryResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:service4.ResponseMessage)
-  private static final generated.ds.service4.ResponseMessage DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:service4.EnquiryResponse)
+  private static final generated.ds.service4.EnquiryResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new generated.ds.service4.ResponseMessage();
+    DEFAULT_INSTANCE = new generated.ds.service4.EnquiryResponse();
   }
 
-  public static generated.ds.service4.ResponseMessage getDefaultInstance() {
+  public static generated.ds.service4.EnquiryResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<ResponseMessage>
-      PARSER = new com.google.protobuf.AbstractParser<ResponseMessage>() {
+  private static final com.google.protobuf.Parser<EnquiryResponse>
+      PARSER = new com.google.protobuf.AbstractParser<EnquiryResponse>() {
     @java.lang.Override
-    public ResponseMessage parsePartialFrom(
+    public EnquiryResponse parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new ResponseMessage(input, extensionRegistry);
+      return new EnquiryResponse(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<ResponseMessage> parser() {
+  public static com.google.protobuf.Parser<EnquiryResponse> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<ResponseMessage> getParserForType() {
+  public com.google.protobuf.Parser<EnquiryResponse> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public generated.ds.service4.ResponseMessage getDefaultInstanceForType() {
+  public generated.ds.service4.EnquiryResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

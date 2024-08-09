@@ -9,14 +9,17 @@ package service4;
 // Interface exported by the server.
 service Service4 {
   
-  rpc service4_do(RequestMessage) returns (ResponseMessage) {}
+  rpc CustomizedPrice(stream EnquiryRequest) returns (stream EnquiryResponse) {}
     
 }
 
-message RequestMessage {
-  string text = 1;  
+message EnquiryRequest {
+  string ProductNumber = 1;
+  string CouponNumber = 2;
+  string Delivery = 3; 
 }
 
-message ResponseMessage {
-  int32 length = 1;
+message EnquiryResponse {
+    string ProductNumber = 1;
+    int32 price = 2;
 }

@@ -15,15 +15,15 @@ public final class Service4Impl {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_service4_RequestMessage_descriptor;
+    internal_static_service4_EnquiryRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_service4_RequestMessage_fieldAccessorTable;
+      internal_static_service4_EnquiryRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_service4_ResponseMessage_descriptor;
+    internal_static_service4_EnquiryResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_service4_ResponseMessage_fieldAccessorTable;
+      internal_static_service4_EnquiryResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -33,12 +33,14 @@ public final class Service4Impl {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016service4.proto\022\010service4\"\036\n\016RequestMes" +
-      "sage\022\014\n\004text\030\001 \001(\t\"!\n\017ResponseMessage\022\016\n" +
-      "\006length\030\001 \001(\0052P\n\010Service4\022D\n\013service4_do" +
-      "\022\030.service4.RequestMessage\032\031.service4.Re" +
-      "sponseMessage\"\000B\'\n\025generated.ds.service4" +
-      "B\014Service4ImplP\001b\006proto3"
+      "\n\016service4.proto\022\010service4\"O\n\016EnquiryReq" +
+      "uest\022\025\n\rProductNumber\030\001 \001(\t\022\024\n\014CouponNum" +
+      "ber\030\002 \001(\t\022\020\n\010Delivery\030\003 \001(\t\"7\n\017EnquiryRe" +
+      "sponse\022\025\n\rProductNumber\030\001 \001(\t\022\r\n\005price\030\002" +
+      " \001(\0052X\n\010Service4\022L\n\017CustomizedPrice\022\030.se" +
+      "rvice4.EnquiryRequest\032\031.service4.Enquiry" +
+      "Response\"\000(\0010\001B\'\n\025generated.ds.service4B" +
+      "\014Service4ImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -52,18 +54,18 @@ public final class Service4Impl {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_service4_RequestMessage_descriptor =
+    internal_static_service4_EnquiryRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_service4_RequestMessage_fieldAccessorTable = new
+    internal_static_service4_EnquiryRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_service4_RequestMessage_descriptor,
-        new java.lang.String[] { "Text", });
-    internal_static_service4_ResponseMessage_descriptor =
+        internal_static_service4_EnquiryRequest_descriptor,
+        new java.lang.String[] { "ProductNumber", "CouponNumber", "Delivery", });
+    internal_static_service4_EnquiryResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_service4_ResponseMessage_fieldAccessorTable = new
+    internal_static_service4_EnquiryResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_service4_ResponseMessage_descriptor,
-        new java.lang.String[] { "Length", });
+        internal_static_service4_EnquiryResponse_descriptor,
+        new java.lang.String[] { "ProductNumber", "Price", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

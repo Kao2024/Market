@@ -30,36 +30,36 @@ public final class Service4Grpc {
   public static final String SERVICE_NAME = "service4.Service4";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<generated.ds.service4.RequestMessage,
-      generated.ds.service4.ResponseMessage> getService4DoMethod;
+  private static volatile io.grpc.MethodDescriptor<generated.ds.service4.EnquiryRequest,
+      generated.ds.service4.EnquiryResponse> getCustomizedPriceMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "service4_do",
-      requestType = generated.ds.service4.RequestMessage.class,
-      responseType = generated.ds.service4.ResponseMessage.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<generated.ds.service4.RequestMessage,
-      generated.ds.service4.ResponseMessage> getService4DoMethod() {
-    io.grpc.MethodDescriptor<generated.ds.service4.RequestMessage, generated.ds.service4.ResponseMessage> getService4DoMethod;
-    if ((getService4DoMethod = Service4Grpc.getService4DoMethod) == null) {
+      fullMethodName = SERVICE_NAME + '/' + "CustomizedPrice",
+      requestType = generated.ds.service4.EnquiryRequest.class,
+      responseType = generated.ds.service4.EnquiryResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<generated.ds.service4.EnquiryRequest,
+      generated.ds.service4.EnquiryResponse> getCustomizedPriceMethod() {
+    io.grpc.MethodDescriptor<generated.ds.service4.EnquiryRequest, generated.ds.service4.EnquiryResponse> getCustomizedPriceMethod;
+    if ((getCustomizedPriceMethod = Service4Grpc.getCustomizedPriceMethod) == null) {
       synchronized (Service4Grpc.class) {
-        if ((getService4DoMethod = Service4Grpc.getService4DoMethod) == null) {
-          Service4Grpc.getService4DoMethod = getService4DoMethod = 
-              io.grpc.MethodDescriptor.<generated.ds.service4.RequestMessage, generated.ds.service4.ResponseMessage>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+        if ((getCustomizedPriceMethod = Service4Grpc.getCustomizedPriceMethod) == null) {
+          Service4Grpc.getCustomizedPriceMethod = getCustomizedPriceMethod = 
+              io.grpc.MethodDescriptor.<generated.ds.service4.EnquiryRequest, generated.ds.service4.EnquiryResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
               .setFullMethodName(generateFullMethodName(
-                  "service4.Service4", "service4_do"))
+                  "service4.Service4", "CustomizedPrice"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  generated.ds.service4.RequestMessage.getDefaultInstance()))
+                  generated.ds.service4.EnquiryRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  generated.ds.service4.ResponseMessage.getDefaultInstance()))
-                  .setSchemaDescriptor(new Service4MethodDescriptorSupplier("service4_do"))
+                  generated.ds.service4.EnquiryResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new Service4MethodDescriptorSupplier("CustomizedPrice"))
                   .build();
           }
         }
      }
-     return getService4DoMethod;
+     return getCustomizedPriceMethod;
   }
 
   /**
@@ -94,20 +94,20 @@ public final class Service4Grpc {
 
     /**
      */
-    public void service4Do(generated.ds.service4.RequestMessage request,
-        io.grpc.stub.StreamObserver<generated.ds.service4.ResponseMessage> responseObserver) {
-      asyncUnimplementedUnaryCall(getService4DoMethod(), responseObserver);
+    public io.grpc.stub.StreamObserver<generated.ds.service4.EnquiryRequest> customizedPrice(
+        io.grpc.stub.StreamObserver<generated.ds.service4.EnquiryResponse> responseObserver) {
+      return asyncUnimplementedStreamingCall(getCustomizedPriceMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            getService4DoMethod(),
-            asyncUnaryCall(
+            getCustomizedPriceMethod(),
+            asyncBidiStreamingCall(
               new MethodHandlers<
-                generated.ds.service4.RequestMessage,
-                generated.ds.service4.ResponseMessage>(
-                  this, METHODID_SERVICE4_DO)))
+                generated.ds.service4.EnquiryRequest,
+                generated.ds.service4.EnquiryResponse>(
+                  this, METHODID_CUSTOMIZED_PRICE)))
           .build();
     }
   }
@@ -135,10 +135,10 @@ public final class Service4Grpc {
 
     /**
      */
-    public void service4Do(generated.ds.service4.RequestMessage request,
-        io.grpc.stub.StreamObserver<generated.ds.service4.ResponseMessage> responseObserver) {
-      asyncUnaryCall(
-          getChannel().newCall(getService4DoMethod(), getCallOptions()), request, responseObserver);
+    public io.grpc.stub.StreamObserver<generated.ds.service4.EnquiryRequest> customizedPrice(
+        io.grpc.stub.StreamObserver<generated.ds.service4.EnquiryResponse> responseObserver) {
+      return asyncBidiStreamingCall(
+          getChannel().newCall(getCustomizedPriceMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -162,13 +162,6 @@ public final class Service4Grpc {
         io.grpc.CallOptions callOptions) {
       return new Service4BlockingStub(channel, callOptions);
     }
-
-    /**
-     */
-    public generated.ds.service4.ResponseMessage service4Do(generated.ds.service4.RequestMessage request) {
-      return blockingUnaryCall(
-          getChannel(), getService4DoMethod(), getCallOptions(), request);
-    }
   }
 
   /**
@@ -191,17 +184,9 @@ public final class Service4Grpc {
         io.grpc.CallOptions callOptions) {
       return new Service4FutureStub(channel, callOptions);
     }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<generated.ds.service4.ResponseMessage> service4Do(
-        generated.ds.service4.RequestMessage request) {
-      return futureUnaryCall(
-          getChannel().newCall(getService4DoMethod(), getCallOptions()), request);
-    }
   }
 
-  private static final int METHODID_SERVICE4_DO = 0;
+  private static final int METHODID_CUSTOMIZED_PRICE = 0;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -220,10 +205,6 @@ public final class Service4Grpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_SERVICE4_DO:
-          serviceImpl.service4Do((generated.ds.service4.RequestMessage) request,
-              (io.grpc.stub.StreamObserver<generated.ds.service4.ResponseMessage>) responseObserver);
-          break;
         default:
           throw new AssertionError();
       }
@@ -234,6 +215,9 @@ public final class Service4Grpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_CUSTOMIZED_PRICE:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.customizedPrice(
+              (io.grpc.stub.StreamObserver<generated.ds.service4.EnquiryResponse>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -285,7 +269,7 @@ public final class Service4Grpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new Service4FileDescriptorSupplier())
-              .addMethod(getService4DoMethod())
+              .addMethod(getCustomizedPriceMethod())
               .build();
         }
       }
