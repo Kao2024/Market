@@ -1,5 +1,8 @@
 package ds.service1;
 
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
+import com.sun.net.httpserver.HttpServer;
 import java.io.IOException;
 
 import generated.ds.service1.LightRequest;
@@ -8,11 +11,40 @@ import generated.ds.service1.Service1Grpc.Service1ImplBase;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class LightSwitch extends Service1ImplBase{
+    public static void main(String[] args) throws Exception {
+    	
+        startMe();
+        startGrpc();
+    }
+    
+    public static void startMe() throws IOException {
+	HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
+        
+        server.createContext("/index.html", new MyHandler());
+        server.setExecutor(null); // creates a default executor
+        server.start();
+        System.out.println("Service1 is running at" + server.getAddress() + "/index.html");
+	}
+    static class MyHandler implements HttpHandler {
+    	
+        public void handle(HttpExchange t) throws IOException {
+            
+            String response = "This is the response from Service1 at " + LocalDateTime.now();
+            t.sendResponseHeaders(200, response.length());
+            OutputStream os = t.getResponseBody();
+            os.write(response.getBytes());
+            os.close();
+            
+        }
+    }
     private final Map<String, Boolean> Lights = new HashMap<>(Map.of(
         "Light1", false,
         "Light2", false,
@@ -20,7 +52,7 @@ public class LightSwitch extends Service1ImplBase{
         "Light4", false,
         "Light5", false));
         
-    public static void main(String[] args) throws InterruptedException, IOException {
+    public static void startGrpc() throws InterruptedException, IOException {
 	LightSwitch service1 = new LightSwitch();
 
 	int port = 50051;

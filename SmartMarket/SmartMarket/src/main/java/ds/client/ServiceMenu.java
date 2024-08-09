@@ -129,7 +129,7 @@ public class ServiceMenu extends javax.swing.JFrame {
             }
         });
 
-        StandardBtn.setText("Price");
+        StandardBtn.setText("Check Price");
         StandardBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StandardBtnActionPerformed(evt);
