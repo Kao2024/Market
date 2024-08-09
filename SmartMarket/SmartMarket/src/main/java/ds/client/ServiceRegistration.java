@@ -26,7 +26,8 @@ public class ServiceRegistration {
 			System.out.println("Registration: InetAddress.getLocalHost():" + InetAddress.getLocalHost());
 
             //start a service
-            LightSwitch.startMe(); 
+            LightSwitch.startMe();
+            LightSwitch.startGrpc();
             //Inventory.startMe();
             //StandardPrice.startMe();
             //CustomPrice.startMe();

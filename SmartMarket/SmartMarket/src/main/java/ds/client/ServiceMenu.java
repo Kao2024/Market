@@ -327,12 +327,12 @@ public class ServiceMenu extends javax.swing.JFrame {
         Service3Grpc.Service3BlockingStub blockingStub = Service3Grpc.newBlockingStub(channel);
 
         //preparing message to send
-        generated.ds.service3.RequestMessage request = generated.ds.service3.RequestMessage.newBuilder().setProductNumber(PNPriceTf.getText()).build();
+        generated.ds.service3.RequestMessage request = generated.ds.service3.RequestMessage.newBuilder().setProductNumber(PNOutputTf.getText()).build();
 
         //retreving reply from service
-        String productNumber = PNinputTf.getText();
+        String productNumber = PNPriceTf.getText();
         generated.ds.service3.ResponseMessage response =  blockingStub.service3Do(request);
-        PNPriceTf.setText(response.getProductNumber() + " : " + response.getPrice());
+        PNOutputTf.setText(response.getProductNumber() + " : " + response.getPrice());
         channel.shutdown();
     }//GEN-LAST:event_StandardBtnActionPerformed
 
@@ -343,7 +343,7 @@ public class ServiceMenu extends javax.swing.JFrame {
 
     private void AllStockBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllStockBtnActionPerformed
         // TODO add your handling code here:
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50052).usePlaintext().build();
         Service2Grpc.Service2BlockingStub stub = Service2Grpc.newBlockingStub(channel);
         
         StockRequest request = StockRequest.newBuilder().setAllStock("All stock").build();
