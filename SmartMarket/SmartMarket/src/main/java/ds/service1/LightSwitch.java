@@ -1,8 +1,5 @@
 package ds.service1;
 
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
-import com.sun.net.httpserver.HttpServer;
 import java.io.IOException;
 
 import generated.ds.service1.LightRequest;
@@ -21,30 +18,9 @@ import java.util.Map;
 public class LightSwitch extends Service1ImplBase{
     public static void main(String[] args) throws Exception {
     	
-        //startMe();
         startGrpc();
     }
     
-//    public static void startMe() throws IOException {
-//	HttpServer server = HttpServer.create(new InetSocketAddress(8001), 0);
-//        
-//        server.createContext("/index.html", new MyHandler());
-//        server.setExecutor(null); // creates a default executor
-//        server.start();
-//        System.out.println("Service1 is running at" + server.getAddress() + "/index.html");
-//	}
-//    static class MyHandler implements HttpHandler {
-//    	
-//        public void handle(HttpExchange t) throws IOException {
-//            
-//            String response = "This is the response from Service1 at " + LocalDateTime.now();
-//            t.sendResponseHeaders(200, response.length());
-//            OutputStream os = t.getResponseBody();
-//            os.write(response.getBytes());
-//            os.close();
-//            
-//        }
-//    }
     private final Map<String, Boolean> Lights = new HashMap<>(Map.of(
         "Light1", false,
         "Light2", false,
@@ -64,7 +40,7 @@ public class LightSwitch extends Service1ImplBase{
 
 	System.out.println("Service-1 started, listening on " + port);
 
-	server.awaitTermination();
+	//server.awaitTermination();
     }
 
 

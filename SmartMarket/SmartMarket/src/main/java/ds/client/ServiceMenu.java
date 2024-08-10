@@ -378,8 +378,6 @@ public class ServiceMenu extends javax.swing.JFrame {
 
     private void TurnOffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TurnOffBtnActionPerformed
         // TODO add your handling code here:
-        
-
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051).usePlaintext().build();
         Service1Grpc.Service1Stub asyncStub = Service1Grpc.newStub(channel);
 

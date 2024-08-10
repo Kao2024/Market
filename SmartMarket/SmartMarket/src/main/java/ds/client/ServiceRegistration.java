@@ -26,49 +26,45 @@ public class ServiceRegistration {
             System.out.println("Registration: InetAddress.getLocalHost():" + InetAddress.getLocalHost());
 
             //start first service
-            //LightSwitch.startMe();
             LightSwitch.startGrpc();
             
             // Register first service
             ServiceInfo service1 = ServiceInfo.create("_grpc._tcp.local.", "LightSwitch", 50051, "Service for LightSwitch");
             jmdns.registerService(service1);
-            System.out.println("Registered:" + InetAddress.getLocalHost() + service1.getPort());
+            System.out.println("Registered: service1 " + InetAddress.getLocalHost() + service1.getPort());
                         
             // Wait a bit
             Thread.sleep(2000);
             
             //start second service
-            //Inventory.startMe();
             Inventory.startGrpc();
             
             // Register second service
             ServiceInfo service2 = ServiceInfo.create("_grpc._tcp.local.", "Inventory", 50052, "Service for Inventory");
             jmdns.registerService(service2);
-            System.out.println("Registered: :" + InetAddress.getLocalHost() + service2.getPort());
+            System.out.println("Registered: : service2" + InetAddress.getLocalHost() + service2.getPort());
             
             // Wait a bit
             Thread.sleep(2000);
             
             //start third service
-            //StandardPrice.startMe();
             StandardPrice.startGrpc();
             
             // Register third service            
             ServiceInfo service3 = ServiceInfo.create("_grpc._tcp.local.", "StandardPrice", 50053, "Service for Price");
             jmdns.registerService(service3);
-            System.out.println("Registered: :" + InetAddress.getLocalHost() + service3.getPort());
+            System.out.println("Registered: : service3" + InetAddress.getLocalHost() + service3.getPort());
             
             // Wait a bit
             Thread.sleep(2000);
             
             //start fourth service
-            //CustomPrice.startMe();
             CustomPrice.startGrpc();
             
             // Register fourth service
             ServiceInfo service4 = ServiceInfo.create("_grpc._tcp.local.", "CustomPrice", 50054, "Service for enquiry");
             jmdns.registerService(service4);
-            System.out.println("Registered: :" + InetAddress.getLocalHost() + service4.getPort());
+            System.out.println("Registered: : service4" + InetAddress.getLocalHost() + service4.getPort());
             
             // Wait a bit
             Thread.sleep(2000);

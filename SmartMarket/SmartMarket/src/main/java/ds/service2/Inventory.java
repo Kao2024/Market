@@ -1,8 +1,5 @@
 package ds.service2;
 
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
-import com.sun.net.httpserver.HttpServer;
 import java.io.IOException;
 
 import generated.ds.service2.RequestMessage;
@@ -21,31 +18,8 @@ import java.util.Map;
 public class Inventory extends Service2ImplBase{
     public static void main(String[] args) throws Exception {
     	
-        //startMe();
         startGrpc();
     }
-//    public static void startMe() throws IOException {
-//	HttpServer server2 = HttpServer.create(new InetSocketAddress(8002), 0);
-//        
-//        server2.createContext("/index.html", new MyHandler());
-//        server2.setExecutor(null); // creates a default executor
-//        server2.start();
-//        System.out.println("Service2 is running at" + server2.getAddress() + "/index.html");
-//	}
-//    static class MyHandler implements HttpHandler {
-//    	
-//        public void handle(HttpExchange t) throws IOException {
-//            
-//            String response = "This is the response from Service2 at " + LocalDateTime.now();
-//            t.sendResponseHeaders(200, response.length());
-//            OutputStream os = t.getResponseBody();
-//            os.write(response.getBytes());
-//            os.close();
-//            
-//        }
-//    }
-    
-    
     
     private final Map<String, Integer> inventory = Map.of(
         "Product001", 10,
@@ -69,7 +43,7 @@ public class Inventory extends Service2ImplBase{
 
 	System.out.println("Service-2 started, listening on " + port);
 
-	server.awaitTermination();
+	//server.awaitTermination();
                 
     }
 

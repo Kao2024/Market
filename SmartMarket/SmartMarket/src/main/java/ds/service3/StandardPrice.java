@@ -1,8 +1,5 @@
 package ds.service3;
 
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
-import com.sun.net.httpserver.HttpServer;
 import java.io.IOException;
 
 import generated.ds.service3.RequestMessage;
@@ -20,29 +17,9 @@ import java.util.Map;
 public class StandardPrice extends Service3ImplBase{
     public static void main(String[] args) throws Exception {
     	
-        startMe();
         startGrpc();
     }
-    public static void startMe() throws IOException {
-	HttpServer server = HttpServer.create(new InetSocketAddress(8003), 0);
-        
-        server.createContext("/index.html", new MyHandler());
-        server.setExecutor(null); // creates a default executor
-        server.start();
-        System.out.println("Service3 is running at" + server.getAddress() + "/index.html");
-	}
-    static class MyHandler implements HttpHandler {
-    	
-        public void handle(HttpExchange t) throws IOException {
-            
-            String response = "This is the response from Service3 at " + LocalDateTime.now();
-            t.sendResponseHeaders(200, response.length());
-            OutputStream os = t.getResponseBody();
-            os.write(response.getBytes());
-            os.close();
-            
-        }
-    }
+    
     private final Map<String, Integer> price = Map.of(
         "Product001", 100,
         "Product002", 200,
@@ -65,7 +42,7 @@ public class StandardPrice extends Service3ImplBase{
 
 	System.out.println("Service-3 started, listening on " + port);
 
-	server.awaitTermination();
+	//server.awaitTermination();
                 
     }
 
