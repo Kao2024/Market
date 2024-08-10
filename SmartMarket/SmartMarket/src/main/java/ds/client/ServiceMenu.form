@@ -60,57 +60,51 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="InventoryLbl" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lightLbl" alignment="0" max="32767" attributes="0"/>
-                              <Component id="PriceLbl" alignment="0" max="32767" attributes="0"/>
-                              <Component id="CutomizeLbl" alignment="0" min="-2" pref="96" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                  <Component id="lightInputTf" min="-2" pref="276" max="-2" attributes="0"/>
+                          <Component id="PNStockTf" min="-2" pref="276" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="AllStockBtn" alignment="1" min="-2" pref="99" max="-2" attributes="0"/>
+                              <Component id="StockBtn" alignment="1" min="-2" pref="99" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="PNLbl" alignment="1" min="-2" pref="88" max="-2" attributes="0"/>
+                                      <Component id="DeliveryLbl" alignment="1" min="-2" pref="88" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="DeliveryInputTf" min="-2" pref="174" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="PNPriceTf" alignment="1" min="-2" pref="275" max="-2" attributes="0"/>
+                              <Component id="PNinputTf" alignment="1" min="-2" pref="174" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="CNLbl" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="CNinputTf" min="-2" pref="174" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="StandardBtn" min="-2" pref="99" max="-2" attributes="0"/>
+                              <Component id="EnquiryBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="InventoryLbl" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lightLbl" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="PriceLbl" alignment="0" pref="290" max="32767" attributes="0"/>
+                                  <Component id="CutomizeLbl" alignment="0" min="-2" pref="96" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="lightInputTf" alignment="1" min="-2" pref="276" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="TurnOnBtn" alignment="1" min="-2" pref="99" max="-2" attributes="0"/>
                               <Component id="TurnOffBtn" alignment="1" min="-2" pref="99" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="PNStockTf" min="-2" pref="276" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="AllStockBtn" alignment="1" min="-2" pref="99" max="-2" attributes="0"/>
-                                      <Component id="StockBtn" alignment="1" min="-2" pref="99" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="PNLbl" alignment="1" min="-2" pref="88" max="-2" attributes="0"/>
-                                              <Component id="DeliveryLbl" alignment="1" min="-2" pref="88" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="DeliveryInputTf" min="-2" pref="174" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="PNPriceTf" alignment="1" min="-2" pref="275" max="-2" attributes="0"/>
-                                      <Component id="PNinputTf" alignment="1" min="-2" pref="174" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="CNLbl" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="CNinputTf" min="-2" pref="174" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="StandardBtn" min="-2" pref="99" max="-2" attributes="0"/>
-                                      <Component id="EnquiryBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -130,39 +124,41 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="TurnOnBtn" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="TurnOffBtn" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="lightLbl" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lightInputTf" min="-2" pref="59" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="InventoryLbl" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                          <Component id="lightOutputSp" min="-2" pref="57" max="-2" attributes="0"/>
+                          <Component id="lightOutputSp" min="-2" pref="52" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="TurnOnBtn" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="TurnOffBtn" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="lightLbl" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lightInputTf" min="-2" pref="54" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
+                  <Component id="InventoryLbl" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                           <Component id="StockBtn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="AllStockBtn" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="PNStockTf" pref="72" max="32767" attributes="0"/>
-                      <Component id="StockOutputSp" alignment="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="StockOutputSp" pref="100" max="32767" attributes="0"/>
+                              <Component id="PNStockTf" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="PriceLbl" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
