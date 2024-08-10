@@ -324,7 +324,7 @@ public class ServiceMenu extends javax.swing.JFrame {
         Service3Grpc.Service3BlockingStub blockingStub = Service3Grpc.newBlockingStub(channel);
 
         //preparing message to send
-        generated.ds.service3.RequestMessage request = generated.ds.service3.RequestMessage.newBuilder().setProductNumber(PNOutputTf.getText()).build();
+        generated.ds.service3.RequestMessage request = generated.ds.service3.RequestMessage.newBuilder().setProductNumber(PNPriceTf.getText()).build();
 
         //retreving reply from service
         String productNumber = PNPriceTf.getText();
